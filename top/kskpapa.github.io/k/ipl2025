@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>~ @cric_links</title>
+    <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+    <style>
+      /* General Styling */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #000000, #1a1a1a);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Logo Styling */
+      #logo {
+        position: absolute;
+        top: 80px; /* Moved the logo a bit down */
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+      }
+
+      #logo img {
+        width: 180px; /* Increased logo size */
+        height: auto;
+      }
+
+      /* Video Player Container */
+      #video {
+        width: 100%;
+        height: 90%;
+        margin: 60px auto 20px;
+        border: 2px solid #1e90ff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        transition: border 0.3s;
+      }
+
+      .fullscreen #video {
+        border: none;
+        box-shadow: none;
+      }
+
+      /* Telegram Button Styling */
+      #telegramButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        height: 50px;
+        background: linear-gradient(90deg, #1e90ff, #001f3f);
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      #telegramButton:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        background: linear-gradient(90deg, #001f3f, #1e90ff);
+      }
+    </style>
+  </head>
+
+<body>
+
+<!-- Video Player -->
+<div id="video"></div>
+
+<!-- Telegram Button -->
+<div id="telegramButton" onclick="redirectToTelegram()">
+    Join Telegram
+</div>
+
+<!-- Scripts -->
+<script src="js/ipl.js"></script>
+
+<script>
+  // Obfuscate elements dynamically to deter external scrapers
+  (function () {
+    const sensitiveElements = document.querySelectorAll('*');
+    sensitiveElements.forEach((el) => {
+      el.setAttribute('data-protected', Math.random().toString(36).substring(2));
+    });
+  })();
+
+  // Function to disable restricted keys
+  function disableRestrictedKeys(e) {
+    const restrictedKeys = ['s', 'u', 'f12'];
+    if ((e.ctrlKey && restrictedKeys.includes(e.key.toLowerCase())) || e.key === 'F12') {
+      e.preventDefault();
+      showNotification("This action is disabled.");
+    }
+  }
+
+  // Function to display a brief notification
+  function showNotification(message) {
+    const notification = document.createElement("div");
+    notification.textContent = message;
+    notification.className = "notification";
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 2000); // Remove after 2 seconds
+  }
+
+  // Add event listeners
+  document.addEventListener('keydown', disableRestrictedKeys, true);
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    showNotification("Right-click is disabled.");
+  }, true);
+
+  // Detect developer tools
+  (function () {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+      get: function () {
+        showNotification("Developer tools detected!");
+        window.location.href = 'about:blank';
+      }
+    });
+    console.log(element);
+  })();
+
+  // Redirect to verification if captcha is not verified
+  "use strict";
+
+  // Redirect if captcha is not verified
+  if (!localStorage.getItem("captcha_verified")) {
+    const currentUrl = encodeURIComponent(window.location.href);
+    window.location.href = `/k/verification?returnUrl=${currentUrl}`;
+  }
+</script>
+<script 
+  disable-devtool-auto="true" 
+  src="https://cdn.jsdelivr.net/npm/disable-devtool" 
+  clear-log="true" 
+  disable-select="true" 
+  disable-copy="true" 
+  disable-cut="true" 
+  disable-paste="true"
+></script>
+</body>
+</html>
